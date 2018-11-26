@@ -27,6 +27,10 @@ function normalizeSourceSet (data) {
 	return sourceSet;
 }
 
+function addDefaultSrc (ev, url) {
+	ev.target.src = url;
+}
+
 class Lightbox extends Component {
 	constructor (props) {
 		super(props);
@@ -276,12 +280,13 @@ class Lightbox extends Component {
 					onClick={onClickImage}
 					sizes={sizes}
 					alt={image.alt}
-					src={image.src}
+					src={image.webpSrc}
 					srcSet={sourceSet}
 					style={{
 						cursor: onClickImage ? 'pointer' : 'auto',
 						maxHeight: `calc(100vh - ${heightOffset})`,
 					}}
+					onError={(e) => addDefaultSrc(e, image.src)}
 				/>
 			</figure>
 		);
