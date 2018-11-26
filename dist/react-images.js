@@ -1011,10 +1011,6 @@ function normalizeSourceSet(data) {
 	return sourceSet;
 }
 
-function addDefaultSrc(ev, url) {
-	ev.target.src = url;
-}
-
 var Lightbox = function (_Component) {
 	inherits(Lightbox, _Component);
 
@@ -1288,21 +1284,23 @@ var Lightbox = function (_Component) {
 			return React__default.createElement(
 				'figure',
 				{ className: aphrodite.css(this.classes.figure) },
-				React__default.createElement('img', {
-					className: aphrodite.css(this.classes.image, imageLoaded && this.classes.imageLoaded),
-					onClick: onClickImage,
-					sizes: sizes,
-					alt: image.alt,
-					src: image.webpSrc,
-					srcSet: sourceSet,
-					style: {
-						cursor: onClickImage ? 'pointer' : 'auto',
-						maxHeight: 'calc(100vh - ' + heightOffset + ')'
-					},
-					onError: function onError(e) {
-						return addDefaultSrc(e, image.src);
-					}
-				})
+				React__default.createElement(
+					'picture',
+					null,
+					React__default.createElement('source', { type: 'image/webp', srcSet: image.webpSrc }),
+					React__default.createElement('img', {
+						className: aphrodite.css(this.classes.image, imageLoaded && this.classes.imageLoaded),
+						onClick: onClickImage,
+						sizes: sizes,
+						alt: image.alt,
+						src: image.src,
+						srcSet: sourceSet,
+						style: {
+							cursor: onClickImage ? 'pointer' : 'auto',
+							maxHeight: 'calc(100vh - ' + heightOffset + ')'
+						}
+					})
+				)
 			);
 		}
 	}, {
