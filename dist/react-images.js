@@ -1289,7 +1289,7 @@ var Lightbox = function (_Component) {
 					null,
 					React__default.createElement('source', { type: 'image/webp', srcSet: image.webpSrc }),
 					React__default.createElement('img', {
-						className: aphrodite.css(this.classes.image, imageLoaded && this.classes.imageLoaded),
+						className: (image.width > image.height ? 'landscape' : 'portrait') + ' ' + aphrodite.css(this.classes.image, imageLoaded && this.classes.imageLoaded),
 						onClick: onClickImage,
 						sizes: sizes,
 						alt: image.alt,

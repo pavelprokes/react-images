@@ -278,7 +278,7 @@ class Lightbox extends Component {
 				<picture>
 					<source type="image/webp" srcSet={image.webpSrc} />
 					<img
-						className={css(this.classes.image, imageLoaded && this.classes.imageLoaded)}
+						className={`${image.width > image.height ? 'landscape' : 'portrait'} ${css(this.classes.image, imageLoaded && this.classes.imageLoaded)}`}
 						onClick={onClickImage}
 						sizes={sizes}
 						alt={image.alt}

@@ -1287,7 +1287,7 @@ var Lightbox = function (_Component) {
 					null,
 					React.createElement('source', { type: 'image/webp', srcSet: image.webpSrc }),
 					React.createElement('img', {
-						className: css(this.classes.image, imageLoaded && this.classes.imageLoaded),
+						className: (image.width > image.height ? 'landscape' : 'portrait') + ' ' + css(this.classes.image, imageLoaded && this.classes.imageLoaded),
 						onClick: onClickImage,
 						sizes: sizes,
 						alt: image.alt,
